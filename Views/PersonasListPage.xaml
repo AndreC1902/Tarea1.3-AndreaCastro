@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea1._3_AndreaCastro.Views.PersonasListPage"
+             Title="Registro de Personas">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView x:Name="ListaPersona" SelectionMode="Single" SelectionChanged="Persona_OnItemTapped">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" 
+                                       ItemSpacing="5">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="Auto" Margin="25,10,50,10">
+                            <!-- Columna 0: Imagen -->
+                            <Image Grid.Row="0" Grid.Column="0" Source="persona.png" HeightRequest="50" 
+                                   WidthRequest="50" Aspect="AspectFill" HorizontalOptions="End"/>
+
+                            <!-- Columna 1: Información de la persona -->
+                            <Grid Grid.Row="0" Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding Nombres}"/>
+                                <Label Grid.Row="1" Text="{Binding Apellidos}"/>
+                                <Label Grid.Row="2" Text="{Binding Edad}"/>
+                                <Label Grid.Row="3" Text="{Binding Correo}"/>
+                                <Label Grid.Row="4" Text="{Binding Direccion}"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <StackLayout HorizontalOptions="CenterAndExpand" Margin="20">
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button Text="Editar/Actualizar" 
+                            x:Name="editarYactualizar" 
+                            BackgroundColor="#FFD230" 
+                            CornerRadius="10" 
+                            TextColor="Black"  
+                            WidthRequest="170" 
+                            Clicked="btnactualizar"/>
+
+                    <Button Text="Eliminar" 
+                            x:Name="eliminar" 
+                            BackgroundColor="#FFD230" 
+                            CornerRadius="10" 
+                            TextColor="Black" 
+                            WidthRequest="170"  
+                            Clicked="btneliminar" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
